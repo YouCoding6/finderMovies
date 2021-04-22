@@ -27,6 +27,8 @@ function searchMovie(inputSearch) {
                 const year = data[i].Year
                 const poster = data[i].Poster
                 const idMovie = data[i].imdbID
+                let notFound = document.querySelector(".not-found-message")
+                notFound.innerHTML = ""
                 showResult(result, title, year, poster, idMovie)
             }
         })
@@ -54,6 +56,7 @@ function readMore(idMovie) {
             const pop = document.querySelector(".detail")
             console.log(plot)
             pop.innerHTML = ""
+            pop.classList.add('detail-active')
             showPopup(pop, title, released, plot, poster)
         })
         .catch((error) => {
@@ -76,18 +79,16 @@ const showPopup = (selector, title, released, plot, poster) => {
                                             <p class="card-text">Description: ${plot}</p>
                                         </div>
                                     </div>
-                                    </div>   
+                                    <a class="close btn btn-secondary" onClick="closePopup()">Close</a>
+                                </div>   
                             </div>`
 
 }
 
-
-
-
 const showResult = (selector, title, year, poster, idMovie) => {
     console.log("here")
     selector.innerHTML += `<div class="card result mb-3">
-                                <div class="row no-gutters">
+                                <div class="row no-gutters wrap">
                                     <div class="col-md-4 img-card">
                                         <img class="img-fluid" src="${poster}" alt="posterMovie">
                                     </div>
@@ -107,10 +108,11 @@ const showErrorMessage = (selector, data) => {
     selector.innerHTML += `<p class= not-found> Any result match with your keyword</p>`
 }
 
-
-
-
-
-
+const closePopup = () => {
+    const detail = document.querySelector(".detail")
+    detail.innerHTML = ""
+    const pop = document.querySelector(".detail")
+    pop.classList.remove('detail-active')
+}
 
 
