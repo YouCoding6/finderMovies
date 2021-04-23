@@ -26,8 +26,8 @@ body {
 
   .card .result{
       width: 800px !important;
-      height: 200px !important;
-  }
+      height: 200px !important;   
+    }
 
   .card-title{
     font-size: 28px ;

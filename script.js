@@ -11,7 +11,7 @@ form.addEventListener('submit', (e) => {
 const api_key = apiKey
 
 function searchMovie(inputSearch) {
-    const url = `https://www.omdbapi.com/?s=${inputSearch}&apikey=${api_key}`
+    const url = `https://www.omdbapi.com/?s=${inputSearch}&apikey=97fa441e`
     fetch(url, {
         method: "GET",
     })
@@ -43,7 +43,7 @@ function searchMovie(inputSearch) {
 
 
 function readMore(idMovie) {
-    const url = `http://www.omdbapi.com/?i=${idMovie}&apikey=${api_key}`
+    const url = `http://www.omdbapi.com/?i=${idMovie}&apikey=97fa441e`
     fetch(url)
         .then((response) => res = response.json())
         .then((res) => {
@@ -58,6 +58,7 @@ function readMore(idMovie) {
             pop.innerHTML = ""
             pop.classList.add('detail-active')
             showPopup(pop, title, released, plot, poster)
+
         })
         .catch((error) => {
             console.log(error)
@@ -101,7 +102,6 @@ const showResult = (selector, title, year, poster, idMovie) => {
                                     </div>
                                 </div>
                             <div/>`
-
 }
 
 const showErrorMessage = (selector, data) => {
